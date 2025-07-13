@@ -38,5 +38,8 @@ public class BankingAppGui extends BaseFrame {
         currentBalanceLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(currentBalanceLabel);
 
+        // create current balance field
+        
+
     }
 }
