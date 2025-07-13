@@ -16,7 +16,7 @@ public class MyJDBC {
 
             // create sql query
             PreparedStatement preparedStatement = connection.prepareStatement(
-               "SELECT * FROM user WHERE username = ? AND password = ?"
+               "SELECT * FROM users WHERE username = ? AND password = ?"
             );
 
             // replace the ? with values
