@@ -65,7 +65,7 @@ public class LoginGui extends BaseFrame{
         loginButton.setFont(new Font("Dialog", Font.BOLD, 20 ));
         loginButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+            public void actionPerformed(ActionEvent e) {
                 // get username
                 String username = usernameField.getText();
 
