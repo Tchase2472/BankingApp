@@ -9,7 +9,7 @@ public class MyJDBC {
     private static final String DB_PASSWORD = "moonlight123";
 
     // if valid return an object with the user's information
-    private static User validateLogin(String username, String password ){
+    public static User validateLogin(String username, String password ){
         try{
             //establish a connection to the database
             Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
