@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class LoginGui extends BaseFrame{
    public LoginGui(){
@@ -99,6 +101,19 @@ public class LoginGui extends BaseFrame{
         registerLabel.setBounds(20, 510, getWidth() - 10, 30);
         registerLabel.setFont(new Font("Dialog", Font.BOLD, 15));
         registerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        // Adds a event listener so when the mouse is clicked it will launch the register gui.
+        registerLabel.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                // dispose of this gui
+                LoginGui.this.dispose();
+
+                // Launch the Register gui
+                new RegisterGui().setVisible(true);
+            }
+
+        });
+
         add(registerLabel);
 
 

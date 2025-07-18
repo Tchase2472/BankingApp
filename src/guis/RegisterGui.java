@@ -78,6 +78,8 @@ public class RegisterGui extends BaseFrame{
         loginLabel.setBounds(20, 510, getWidth() - 10, 30);
         loginLabel.setFont(new Font("Dialog", Font.BOLD, 15));
         loginLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+
         add(loginLabel);
 
     }

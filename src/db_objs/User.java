@@ -35,7 +35,7 @@ public class User {
     }
 
     public void setCurrentBalance(BigDecimal newBalance){
-        // store new value to the @nd decimal place
+        // store new value to the 2nd decimal place
         currentBalance = newBalance.setScale(2, RoundingMode.FLOOR);
     }
 }
