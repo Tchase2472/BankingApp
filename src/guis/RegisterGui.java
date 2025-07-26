@@ -2,6 +2,8 @@ package guis;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RegisterGui extends BaseFrame{
     public RegisterGui(){
@@ -67,11 +69,21 @@ public class RegisterGui extends BaseFrame{
         rePasswordField.setFont(new Font("Dialog", Font.PLAIN, 28 ));
         add(rePasswordField);
 
-        // create login button
+        // create register button
         JButton registerButton = new JButton("Register");
         registerButton.setBounds(20, 460, getWidth() - 50, 40);
         registerButton.setFont(new Font("Dialog", Font.BOLD, 20 ));
-        add(registerButton);
+
+        registerButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 
+            }
+        });
+
+
+
+    add(registerButton);
 
         // create login label
         JLabel loginLabel = new JLabel("<html><a href=\"#\">Have an account? Sign-in here</a></html>");
