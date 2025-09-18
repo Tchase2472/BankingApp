@@ -10,10 +10,10 @@ import java.sql.*;
 public class MyJDBC {
     // database configuration
     private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/banking_app";
-    private static final String DB_USERNAME = "toddw";
-    private static final String DB_PASSWORD = "moonlight123";
+    private static final String DB_USERNAME = System.getenv("DATABASE_USERNAME");
+    private static final String DB_PASSWORD = System.getenv("DATABASE_PASSWORD");
 
-    // if valid return an object witht the user's information
+    // if valid return an object with the user's information
     public static User validateLogin(String username, String password){
         try{
         // establish a connection to the database using configuration
@@ -86,7 +86,7 @@ public class MyJDBC {
     // false - user doesn't exist
     private static boolean checkUser(String username){
         try{
-            Connection connection = DriverManager(DB_URL, DB_PASSWORD );
+            Connection connection = DriverManager.getConnection(DB_URL,DB_USERNAME, DB_PASSWORD );
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT * FROM user WHERE username = ? "
