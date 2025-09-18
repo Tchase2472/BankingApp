@@ -1,5 +1,7 @@
 package guis;
 
+import db_objs.MyJDBC;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -77,13 +79,40 @@ public class RegisterGui extends BaseFrame{
         registerButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                // 
-            }
-        });
+                // get username
+                String username = usernameField.getText();
 
+                // get password
+                String password = String.valueOf(passwordField.getPassword());
 
+                //get re password
+                String rePassword = String.valueOf(rePasswordField.getPassword());
 
-    add(registerButton);
+                //we will need to validate the user input
+                if(validateUserInput(username, password, rePassword)) {
+                    // attempt to register user to the database
+                    if (MyJDBC.register(username, password)) {
+                        //register success
+                        // dispose of this gui
+                        RegisterGui.this.dispose();
+
+                        // launch the Login gui
+                        LoginGui loginGui = new LoginGui();
+                        loginGui.setVisible(true);
+
+                        // create result dialog
+                        JOptionPane.showMessageDialog(loginGui, "Registered Account Successfully!");
+                    } else {
+                        JOptionPane.showMessageDialog(RegisterGui.this, "Error: Username already taken");
+                    }
+                }else{
+                        // invalid user input
+                        JOptionPane.showMessageDialog(RegisterGui.this, "Error: Username must be at least 6 characters\n"
+                                + "and/or Password must match");
+                    }
+                }
+            });
+            add(registerButton);
 
         // create login label
         JLabel loginLabel = new JLabel("<html><a href=\"#\">Have an account? Sign-in here</a></html>");
@@ -95,4 +124,18 @@ public class RegisterGui extends BaseFrame{
         add(loginLabel);
 
     }
+
+    private boolean validateUserInput(String username, String password, String rePassword){
+            // all fields must have a value
+            if(username.length() == 0 || password.length() == 0 || rePassword.length() == 0) return false;
+
+            // username has to be at least 6 characters long
+            if(username.length() < 6) return false;
+
+            // password and rePassword must be the same
+            if(!password.equals(rePassword)) return false;
+
+            //passes validation
+            return true;
+        }
 }
